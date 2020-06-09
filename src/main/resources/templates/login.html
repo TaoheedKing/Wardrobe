@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
@@ -12,22 +13,58 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-<h2>Login Page</h2>
-<div th:if="${param.error}">
-    Invalid username or password
+<!--<h2>Login Page</h2>-->
+<!--<div th:if="${param.error}">-->
+<!--    Invalid username or password-->
+<!--</div>-->
+<!--<form th:action="@{/login}" method="post">-->
+<!--    <div>-->
+<!--        <label>Username: <input type="text" name="username"></label>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label>Password: <input type="text" name="password"></label>-->
+<!--    </div>-->
+
+<!--    <input type="submit" value="Sign In">-->
+<!--Login page-->
+<!--</form>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="row">
+        <!--        left of page-->
+        <div class="col-md-8">
+            <nav class="navbar navbar-light bg-light">
+  <span class="navbar-text">
+    <h5>Welcome to,</h5>
+      <h2>The Wardrobe</h2>
+  </span>
+            </nav>
+            <div class="logImg">
+                <!--                <img  src="https://images.pexels.com/photos/4056475/pexels-photo-4056475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img" alt="cover-image">-->
+                <img  src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img" alt="cover-image">
+            </div>
+        </div>
+        <!--        right of page log in form-->
+
+
+
+        </div>
+    </div>
 </div>
-<form th:action="@{/login}" method="post">
-    <div>
-        <label>Username: <input type="text" name="username"></label>
-    </div>
-    <div>
-        <label>Password: <input type="text" name="password"></label>
-    </div>
-
-    <input type="submit" value="Sign In">
-
-
-</form>
+<!--Login page ends-->
 
 </body>
 </html>

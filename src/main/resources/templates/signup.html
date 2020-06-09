@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" xmlns:th=”www.thymeleaf.org”>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+<!--Login page-->
+<!--</form>-->
+<div class="container">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="row">
+        <!--        left of page-->
+        <div class="col-md-8">
+            <nav class="navbar navbar-light bg-light">
+  <span class="navbar-text">
+    <h5>Welcome to,</h5>
+      <h2>The Wardrobe</h2>
+  </span>
+            </nav>
+            <div class="logImg">
+                <!--                <img  src="https://images.pexels.com/photos/4056475/pexels-photo-4056475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img" alt="cover-image">-->
+                <img  src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img" alt="cover-image">
+            </div>
+        </div>
+
+
+
+        <!--        right of page log in form-->
+        <div class="col-6 col-md-4">
+            <br><br><br>
+            <h3>User Information</h3>
+            <form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post">
+                <div class="input-group mb-3">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer01">Firstname</label>
+                            <input th:field="*{firstName}" type="text" class="form-control is-valid" id="validationServer01" placeholder="Enter firstname..." required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer02">Lastname</label>
+                            <input th:field="*{lastName}" type="text" class="form-control is-valid" id="validationServer02" placeholder="Enter lastname..." required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer01">Email</label>
+                            <input th:field="*{personName}" type="email" class="form-control is-valid" id="validationServer03" placeholder="user@domain.com" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer02">Phone Number</label>
+                            <input th:field="*{phone}" type="text" class="form-control is-valid" id="validationServer04" placeholder="(555)555-555" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Pet name input-->
+                    <div class="form-row">
+
+                        <div class="col-12">
+                            <label for="validationServer03">Username</label>
+                            <input type="text" class="form-control is-invalid" id="validationServer05" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid username.
+                            </div>
+                        </div>
+<br>
+                        <div class="col-12">
+                            <label for="validationServer03">Password</label>
+                            <input type="password" class="form-control is-invalid" id="validationServer06" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid password.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                            <label class="form-check-label" for="invalidCheck3">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--                        <div class="col-6">-->
+                    <!--                            <button type="submit" class="btn btn-outline-success btn-lg">Login</button>-->
+                    <!--                        </div>-->
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <input class="btn btn-outline-primary btn-lg" type="submit" value="Sign Up" onclick="document.getElementById('myInput').value=''">
+                        <!--                            <button type="submit" class="btn btn-outline-primary btn-lg" onclick="document.getElementById('myInput').value=''">Add User</button>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Login page ends-->
+</body>
+</html>
