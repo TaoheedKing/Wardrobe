@@ -106,6 +106,14 @@ public class HomeController {
         }
         return "redirect:/";
     }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") long id, Model model){
+        model.addAttribute("task", itemRepository.findById(id).get());
+        itemRepository.deleteById(id);
+        return "redirect:/";
+    }
+
 =======
 >>>>>>> Stashed changes
 }
