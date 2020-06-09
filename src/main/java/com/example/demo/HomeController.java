@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+<<<<<<< Updated upstream
 import org.springframework.web.multipart.MultipartFile;
+=======
+>>>>>>> Stashed changes
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -87,6 +90,7 @@ public class HomeController {
         return "index";
     }
 
+<<<<<<< Updated upstream
     @PostMapping("/add")
     public String processActor(@ModelAttribute Item item, @RequestParam("file") MultipartFile file){
         if(file.isEmpty()){
@@ -102,4 +106,6 @@ public class HomeController {
         }
         return "redirect:/";
     }
+=======
+>>>>>>> Stashed changes
 }
