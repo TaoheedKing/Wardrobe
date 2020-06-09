@@ -1,0 +1,14 @@
+.container{
+    max-width: 100% !important;
+    height: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.logImg {
+    width: 100% !important;
+    height: auto !important;
+}
+
