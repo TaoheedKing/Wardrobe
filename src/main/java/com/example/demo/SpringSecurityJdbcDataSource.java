@@ -11,14 +11,14 @@ public class SpringSecurityJdbcDataSource {
     @Bean
     public CommandLineRunner run(UserRepository userRepository, RoleRepository rolesRepository) throws Exception{
         return (String[]args)->{
-            User user = new User("bart", "bart@domain", "bart", "Bart", "Simpson", true);
-            Role userRole = new Role("bart", "ROLE_USER");
+            User user = new User("user", "bart@domain", "user", "Taoheed", "King", true);
+            Role userRole = new Role("user", "ROLE_USER");
 
             userRepository.save(user);
             rolesRepository.save(userRole);
 
-            User admin = new User("super", "super@domain", "super", "Super", "Man", true);
-            Role adminRole = new Role("super", "ROLE_ADMIN");
+            User admin = new User("admin", "super@domain", "admin", "Miles", "Baker", true);
+            Role adminRole = new Role("admin", "ROLE_ADMIN");
 
             userRepository.save(admin);
             rolesRepository.save(adminRole);

@@ -1,4 +1,4 @@
-# Wardrobe
+# Wardrobe Instructions
 A wardrobe at the very least should include:
 
 Tops (shirts, tank tops, sweaters)
