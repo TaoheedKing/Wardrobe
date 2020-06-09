@@ -107,6 +107,7 @@ public class HomeController {
         return "redirect:/";
     }
 
+    //TAK added this
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, Model model){
         model.addAttribute("task", itemRepository.findById(id).get());
