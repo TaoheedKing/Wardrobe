@@ -1,17 +1,21 @@
 package com.example.demo;
 
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+<<<<<<< Updated upstream
+import org.springframework.web.multipart.MultipartFile;
+=======
+>>>>>>> Stashed changes
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -22,6 +26,11 @@ public class HomeController {
 
     @Autowired
     RoleRepository roleRepository;
+    @Autowired
+    CloudinaryConfig cloudc;
+
+    @Autowired
+    ItemRepository itemRepository;
 
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model){
@@ -37,7 +46,6 @@ public class HomeController {
         model.addAttribute("user", userRepository.findByUsername(username));
         return "index";
     }
-
     @RequestMapping("/login")
     public String login(){
         return "login";
@@ -82,5 +90,22 @@ public class HomeController {
         return "index";
     }
 
-
+<<<<<<< Updated upstream
+    @PostMapping("/add")
+    public String processActor(@ModelAttribute Item item, @RequestParam("file") MultipartFile file){
+        if(file.isEmpty()){
+            return "redirect:/add";
+        }
+        try { Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype","auto"));
+            item.setImages(uploadResult.get("url").toString());
+            itemRepository.save(item);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            return "redirect:/add";
+        }
+        return "redirect:/";
+    }
+=======
+>>>>>>> Stashed changes
 }
