@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 public class Category {
     @Id
@@ -17,6 +15,9 @@ public class Category {
     private String shoes;
 
     private String accessories;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<Item>items;
 
     public String getTops() {
         return tops;

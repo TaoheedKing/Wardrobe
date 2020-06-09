@@ -1,9 +1,9 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.org.apache.xpath.internal.objects.XObject;
+import org.hibernate.annotations.Fetch;
+
+import javax.persistence.*;
 
 @Entity
 public class Item {
@@ -11,10 +11,31 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String color;
-    private String fabric_material;
+    private String fabricMaterial;
     private String images;
     private double size;
+    private String itemName;
+    private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
     private Category category;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
 
     public Item() {
     }
@@ -51,12 +72,12 @@ public class Item {
         this.color = color;
     }
 
-    public String getFabric_material() {
-        return fabric_material;
+    public String getFabricMaterial() {
+        return fabricMaterial;
     }
 
-    public void setFabric_material(String fabric_material) {
-        this.fabric_material = fabric_material;
+    public void setFabricMaterial(String fabric_material) {
+        this.fabricMaterial = fabric_material;
     }
 
     public String getImages() {
