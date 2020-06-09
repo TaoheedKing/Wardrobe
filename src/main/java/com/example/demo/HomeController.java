@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 import org.springframework.web.multipart.MultipartFile;
-=======
->>>>>>> Stashed changes
+//=======
+//>>>>>>> Stashed changes
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -26,11 +26,15 @@ public class HomeController {
 
     @Autowired
     RoleRepository roleRepository;
+
     @Autowired
     CloudinaryConfig cloudc;
 
     @Autowired
     ItemRepository itemRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model){
@@ -90,8 +94,15 @@ public class HomeController {
         return "index";
     }
 
-<<<<<<< Updated upstream
-    @PostMapping("/add")
+    @GetMapping("/add")
+    public String addItem(Model model){
+        model.addAttribute("item", new Item());
+        model.addAttribute("allcategories", categoryRepository.findAll());
+        return "add";
+    }
+
+//<<<<<<< Updated upstream
+    @PostMapping("/processItem")
     public String processActor(@ModelAttribute Item item, @RequestParam("file") MultipartFile file){
         if(file.isEmpty()){
             return "redirect:/add";
@@ -106,6 +117,14 @@ public class HomeController {
         }
         return "redirect:/";
     }
-=======
->>>>>>> Stashed changes
+
+    //TAK added this
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") long id, Model model){
+        model.addAttribute("task", itemRepository.findById(id).get());
+        itemRepository.deleteById(id);
+        return "redirect:/";
+    }
+//=======
+//>>>>>>> Stashed changes
 }
