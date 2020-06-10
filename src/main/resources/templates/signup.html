@@ -49,6 +49,7 @@
             <form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post">
                 <div class="input-group mb-3">
                     <div class="form-row">
+<!--                        First name-->
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Firstname</label>
                             <input th:field="*{firstName}" id="firstName" type="text" class="form-control is-valid" id="validationServer01" placeholder="Enter firstname..." required>
@@ -56,6 +57,7 @@
                                 Looks good!
                             </div>
                         </div>
+<!--                        Last name-->
                         <div class="col-md-6 mb-3">
                             <label for="validationServer02">Lastname</label>
                             <input th:field="*{lastName}" id="lastName" type="text" class="form-control is-valid" id="validationServer02" placeholder="Enter lastname..." required>
@@ -65,6 +67,7 @@
                         </div>
                     </div>
                     <br><br>
+<!--                    Email-->
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationServer01">Email</label>
@@ -73,6 +76,7 @@
                                 Looks good!
                             </div>
                         </div>
+<!--                        Phone number-->
                         <div class="col-md-6 mb-3">
                             <label for="validationServer02">Phone Number</label>
                             <input th:field="*{phone}" id="phone" type="text" class="form-control is-valid" id="validationServer04" placeholder="(555)555-555" required>
@@ -82,16 +86,43 @@
                         </div>
                     </div>
 
+<!--                    Username-->
                     <div class="form-row">
-
                         <div class="col-12">
                             <label for="validationServer03">Username</label>
-                            <input th:field="*{username}" id="username" type="text" class="form-control is-invalid" id="validationServer05" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid username.
-                            </div>
+                            <input th:field="*{username}" id="username" type="text"  id="validationServer05" required>
+
                         </div>
+
+                        <mark>
+                            <strong>
+                                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="form-control is-invalid">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid username.
+                                    </div>
+                                </span>
+                            </strong>
+                        </mark>
+                        <mark>
+                            <strong>
+                                <span th:unless="${#fields.hasErrors('username')}" th:errors="*{username}" class="form-control is-valid">
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </span>
+                            </strong>
+                        </mark>
+
+
+
+
+
+
+
+
+
 <br>
+<!--                        Password-->
                         <div class="col-12">
                             <label for="validationServer03">Password</label>
                             <input th:field="*{password}" id="password" type="password" class="form-control is-invalid" id="validationServer06" required>

@@ -4,6 +4,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user_db")
@@ -13,7 +14,6 @@ public class User {
     private long id;
 
     @Column(name = "username")
-    @NotEmpty
     private String username;
 
     @Column(name = "email")

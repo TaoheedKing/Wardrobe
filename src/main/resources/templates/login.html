@@ -14,20 +14,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 <!--<h2>Login Page</h2>-->
-<!--<div th:if="${param.error}">-->
-<!--    Invalid username or password-->
-<!--</div>-->
-<!--<form th:action="@{/login}" method="post">-->
-<!--    <div>-->
-<!--        <label>Username: <input type="text" name="username"></label>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <label>Password: <input type="text" name="password"></label>-->
-<!--    </div>-->
 
-<!--    <input type="submit" value="Sign In">-->
-<!--Login page-->
-<!--</form>-->
 
 
 
@@ -58,7 +45,20 @@
             </div>
         </div>
         <!--        right of page log in form-->
+        <div th:if="${param.error}">
+            Invalid username or password
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div>
+                <label>Username: <input type="text" name="username"></label>
+            </div>
+            <div>
+                <label>Password: <input type="text" name="password"></label>
+            </div>
 
+            <input type="submit" value="Sign In">
+            Login page
+        </form>
 
 
         </div>
