@@ -25,13 +25,7 @@
     <input type="text" th:field="*{images}">
     <select th:field="*{category}">
     <option th:each="cate:${allcategories}"
-            th:text="${cate.tops}" th:value="${cate.id}"></option>
-        <option th:each="cate:${allcategories}"
-                th:text="${cate.bottoms}" th:value="${cate.id}"></option>
-        <option th:each="cate:${allcategories}"
-                th:text="${cate.accessories}" th:value="${cate.id}"></option>
-        <option th:each="cate:${allcategories}" th:text="${cate.shoes}" th:value="${cate.id}"></option>
-    </option>
+
     </select>
 
     <br/>
