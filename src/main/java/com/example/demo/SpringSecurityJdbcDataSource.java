@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringSecurityJdbcDataSource {
-    public static void main(String[] args) {
-    }
+//    public static void main(String[] args) {
+//    }
     @Bean
     public CommandLineRunner run(UserRepository userRepository, RoleRepository rolesRepository) throws Exception{
         return (String[]args)->{
