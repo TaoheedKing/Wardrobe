@@ -24,6 +24,8 @@ SpringSecurityJdbcDataSource {
 
             userRepository.save(admin);
             rolesRepository.save(adminRole);
+//
+
         };
     }
 
