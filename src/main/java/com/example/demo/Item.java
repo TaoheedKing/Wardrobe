@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import com.sun.org.apache.xpath.internal.objects.XObject;
-import org.hibernate.annotations.Fetch;
-
 import javax.persistence.*;
 
 @Entity

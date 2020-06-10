@@ -117,7 +117,11 @@ public class HomeController {
         }
         return "redirect:/";
     }
-
+    @RequestMapping("/wardrobe")
+    public String listItem(Model model){
+      model.addAttribute("items",itemRepository.findAll());
+      return "wardrobe";
+    }
     //TAK added this
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, Model model){
