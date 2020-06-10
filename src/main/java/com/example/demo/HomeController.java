@@ -151,9 +151,12 @@ public class HomeController {
     //TAK added this
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, Model model){
+
         model.addAttribute("task", itemRepository.findById(id).get());
+        Item i=itemRepository.findById(id).get();
+        i.setCategory(null);
         itemRepository.deleteById(id);
-        return "redirect:/";
+        return "redirect:/wardrobe";
     }
 //=======
 //>>>>>>> Stashed changes
