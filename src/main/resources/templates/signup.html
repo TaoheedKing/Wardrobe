@@ -4,10 +4,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="styles.css">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Sign Up</title>
+    <style>
+        .container{
+            max-width: 100% !important;
+            height: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+    </style>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -90,38 +98,12 @@
                     <div class="form-row">
                         <div class="col-12">
                             <label for="validationServer03">Username</label>
-                            <input th:field="*{username}" id="username" type="text"  id="validationServer05" required>
-
+                            <input th:field="*{username}" id="username" type="text" class="form-control is-invalid" id="validationServer05" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid password.
+                            </div>
                         </div>
 
-                        <mark>
-                            <strong>
-                                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="form-control is-invalid">
-                                    <div class="invalid-feedback">
-                                        Please provide a valid username.
-                                    </div>
-                                </span>
-                            </strong>
-                        </mark>
-                        <mark>
-                            <strong>
-                                <span th:unless="${#fields.hasErrors('username')}" th:errors="*{username}" class="form-control is-valid">
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                </span>
-                            </strong>
-                        </mark>
-
-
-
-
-
-
-
-
-
-<br>
 <!--                        Password-->
                         <div class="col-12">
                             <label for="validationServer03">Password</label>

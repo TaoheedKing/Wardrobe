@@ -6,16 +6,16 @@
     <title>Title</title>
 </head>
 <body>
-<a th:href="{@/add}"><button> Add New Outfit </button></a>
+<a th:href="@{/add}"><button> Add New Outfit </button></a>
 
 <br/>
 <title>OUR FORM</title>
-<form th:action="@{/processItem}" th:object="${item}" method="post">
+<form th:action="@{/processItem}" th:object="${item}" method="post" enctype="multipart/form-data">
     Name: <input type="text" th:field="*{itemName}" placeholder="Enter clothing item">
     <br/>
     Material: <input type="text" th:field="*{fabricMaterial}" placeholder="Enter material(s)...">
     <br/>
-    Size: <input type="text" th:field="*{size}" placeholder="Enter size...">
+    Size: <input type="number" th:field="*{size}" placeholder="Enter size...">
     <br/>
     Color: <input type="text" th:field="*{color}" placeholder="What is the color?">
     <br/>
@@ -25,15 +25,17 @@
     <input type="text" th:field="*{images}">
     <select th:field="*{category}">
     <option th:each="cate:${allcategories}"
-            th:text="${cate.tops}"
-            th:text="${cate.bottoms}"
-            th:text="${cate.accessories}"
-            th:text="${cate.shoes}">
+            th:text="${cate.tops}" th:value="${cate.id}"></option>
+        <option th:each="cate:${allcategories}"
+                th:text="${cate.bottoms}" th:value="${cate.id}"></option>
+        <option th:each="cate:${allcategories}"
+                th:text="${cate.accessories}" th:value="${cate.id}"></option>
+        <option th:each="cate:${allcategories}" th:text="${cate.shoes}" th:value="${cate.id}"></option>
     </option>
     </select>
 
     <br/>
-
+    <input type="file" name="file">
 <input type="submit" value="Submit">
 </form>
 <table>
