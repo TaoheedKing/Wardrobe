@@ -35,9 +35,12 @@
             </td>
         </div>
         <td>[[${item.size}]]</td>
-        <span th:each= "cate: ${item.category}">
-     <td>[[${cate.tops}]] [[${cate.bottoms}]] [[${cate.accessories}]] [[${cate.shoes}]]</td>
+        <span th:each="cate: ${item.category}">
+     <td>[[${cate.categoryType}]]</td>
     </span>
+        <td>
+            <a th:href="@{/delete/{id}(id=${item.id})}"><button>Delete</button></a>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -16,12 +16,32 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Category category = new Category();
+//        Category category = new Category();
+//
+//        category.setTops("Tops");
+//        category.setBottoms("Bottoms");
+//        category.setShoes("sneakers");
+//        category.setAccessories("");
+//        category.setJackets("");
+//        categoryRepository.save(category);
+        Category tops = new Category();
+        tops.setCategoryType("Tops");
+        categoryRepository.save(tops);
 
-        category.setTops("Tops");
-        category.setBottoms("Bottoms");
-        category.setShoes("sneakers");
-        category.setShoes("");
-        categoryRepository.save(category);
+        Category bottoms = new Category();
+        bottoms.setCategoryType("Bottoms");
+        categoryRepository.save(bottoms);
+
+        Category accessories = new Category();
+        accessories.setCategoryType("Accessories");
+        categoryRepository.save(accessories);
+
+        Category shoes = new Category();
+        shoes.setCategoryType("Shoes");
+        categoryRepository.save(shoes);
+
+        Category jackets = new Category();
+        jackets.setCategoryType("Jacket");
+        categoryRepository.save(jackets);
     }
 }
