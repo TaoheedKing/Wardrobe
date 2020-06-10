@@ -54,6 +54,32 @@ public class HomeController {
     public String login(){
         return "login";
     }
+    @GetMapping("/signup")
+    public String signup(Model model){
+        model.addAttribute("user", new User());
+        return "signup";
+    }
+    @PostMapping("/processsignup")
+    public String processSignup(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        model.addAttribute("user", user);
+        if (result.hasErrors()) {
+            return "signup";
+        } else {
+            model.addAttribute("message", "You have successfully created an account!");
+//            String username = principal.getName();
+//            model.addAttribute("user", userRepository.findByUsername(username));
+            user.setEnabled(true);
+            Role role = new Role(user.getUsername(), "ROLE_USER");
+            Set<Role> roles = new HashSet<Role>();
+            roles.add(role);
+
+            roleRepository.save(role);
+            userRepository.save(user);
+        }
+        return "redirect:/login";
+    }
+
+
     @RequestMapping("/logout")
     public String logout(){
         return "redirect:/login?logout=true";

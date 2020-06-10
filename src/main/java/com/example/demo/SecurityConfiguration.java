@@ -18,16 +18,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
+                .antMatchers("/signup", "/h2-console/**", "/processsignup").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/register").hasRole("ADMIN")
                 .antMatchers("/**").hasAnyRole( "ADMIN", "USER")
+//                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout=true").permitAll();
+
+        httpSecurity.csrf().ignoringAntMatchers("/h2-console/**");
+        httpSecurity.headers().frameOptions().sameOrigin();
+
     }
+
 
 
     @Autowired

@@ -32,18 +32,23 @@ public class User {
     @NotEmpty
     private String lastName;
 
+    @Column(name = "phone")
+    @NotEmpty
+    private String phone;
+
     @Column(name = "enabled")
     private boolean enabled;
 
     public User() {
     }
 
-    public User(String username, String email, String password, String firstName, String lastName, boolean enabled) {
+    public User(String username, String email, String password, String firstName, String lastName, String phone, boolean enabled) {
         this.username = username;
         this.email = email;
         this.setPassword(password);
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phone = phone;
         this.enabled = enabled;
     }
 
@@ -102,5 +107,13 @@ public class User {
     public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(password);
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
