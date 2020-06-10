@@ -28,7 +28,12 @@
     <tbody th:each="item: ${items}">
     <tr>
         <td>[[${item.color}]]</td>
-        <td>[[${item.fabric_material}]]</td>
+        <td>[[${item.fabricMaterial}]]</td>
+        <div th:if="${item.images} != null">
+            <td>
+                <img th:src="${item.images}">
+            </td>
+        </div>
         <td>[[${item.images}]]</td>
         <td>[[${item.size}]]</td>
         <span th:each= "cate: ${item.category}">
