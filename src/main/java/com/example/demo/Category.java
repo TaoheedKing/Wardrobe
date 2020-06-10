@@ -19,9 +19,37 @@ public class Category {
     private String shoes;
 
     private String accessories;
+    private String jackets;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Item>items;
+
+    public Category() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getJackets() {
+        return jackets;
+    }
+
+    public void setJackets(String jackets) {
+        this.jackets = jackets;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
+    }
 
     public String getTops() {
         return tops;
