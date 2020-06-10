@@ -148,6 +148,13 @@ public class HomeController {
       model.addAttribute("items",itemRepository.findAll());
       return "wardrobe";
     }
+
+    @RequestMapping("/outfit")
+    public String listAllOutfit(Model model){
+        model.addAttribute("items",itemRepository.findAll());
+        return "outfit";
+    }
+
     //TAK added this
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, Model model){
