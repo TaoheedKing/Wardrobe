@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
     @Autowired
     CategoryRepository categoryRepository;
+
+    @Autowired
+    ItemRepository itemRepository;
     //Tops (shirts, tank tops, sweaters)
     //            Bottoms (pants, skirts, shorts)
 //            Jackets (light jackets, rain jackets or heavy coats)
@@ -43,5 +46,21 @@ public class DataLoader implements CommandLineRunner {
         Category jackets = new Category();
         jackets.setCategoryType("Jacket");
         categoryRepository.save(jackets);
+
+        Item topOne = new Item();
+        topOne.setCategory(tops);
+        topOne.setColor("green");
+        topOne.setFabricMaterial("cotton");
+        topOne.setSize(7);
+        topOne.setItemName("Shirt");
+        itemRepository.save(topOne);
+
+        Item bottomOne = new Item();
+        bottomOne.setCategory(bottoms);
+        bottomOne.setColor("green");
+        bottomOne.setFabricMaterial("cotton");
+        bottomOne.setSize(31);
+        bottomOne.setItemName("Jeans");
+        itemRepository.save(bottomOne);
     }
 }
