@@ -169,6 +169,9 @@ public class HomeController {
         model.addAttribute("outfits", itemRepository.findAll());
         return "outfit";
     }
+
+
+
     //TAK added this
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, Model model){
