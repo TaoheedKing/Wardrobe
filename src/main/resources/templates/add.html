@@ -6,33 +6,11 @@
     <title>Title</title>
 </head>
 <body>
-<a th:href="@{/add}"><button> Add New Outfit </button></a>
+<div th:replace="fragment :: navbar"></div>
 
-<br/>
-<title>OUR FORM</title>
-<form th:action="@{/processItem}" th:object="${item}" method="post" enctype="multipart/form-data">
-    Name: <input type="text" th:field="*{itemName}" placeholder="Enter clothing item">
-    <br/>
-    Material: <input type="text" th:field="*{fabricMaterial}" placeholder="Enter material(s)...">
-    <br/>
-    Size: <input type="number" th:field="*{size}" placeholder="Enter size...">
-    <br/>
-    Color: <input type="text" th:field="*{color}" placeholder="What is the color?">
-    <br/>
-    Description: <textarea rows="3" th:field="*{description}" placeholder="Description..."></textarea>
-    <br/>
-    
-<!--    <input type="text" th:field="*{images}">-->
-<!--    <select th:field="*{category}">-->
-<!--    <option th:each="cate:${allcategories}"-->
-<!--            th:text="${cate.tops}" th:value="${cate.id}"></option>-->
-<!--        <option th:text="${cate.bottoms}" th:value="${cate.id}"></option>-->
-<!--        <option th:text="${cate.accessories}" th:value="${cate.id}"></option>-->
-<!--        <option th:text="${cate.shoes}" th:value="${cate.id}"></option>-->
-<!--        <option th:text="${cate.jacket}" th:value="${cate.id}"></option>-->
-<!--    </option>-->
-<!--    </select>-->
+<div th:replace="fragment :: add-item"></div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     <input type="text" th:field="*{images}">
 <!--    <select th:field="*{category}">-->
@@ -63,6 +41,8 @@
 <!--    <a th:href="@{/delete/{id}(id=${item.id})}"><button>Delete</button></a>-->
 <!--</td>-->
 </table>
+=======
+>>>>>>> 100082e2c17bd13375a77e4dc29f610972c2e459
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
