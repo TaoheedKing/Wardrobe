@@ -19,7 +19,6 @@
 <body>
 
 
-
 <!--Navbar start-->
 
 <div th:fragment="navbar">
@@ -50,9 +49,6 @@
                         <a class="dropdown-item" th:href="@{/add}">Add New Item</a>
                     </div>
                 </li>
-<!--                Add an add item page-->
-<!--                Add an add dropdown for cloth options-->
-<!--                Drop down items: wardrobe, outfits, add item-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -135,22 +131,37 @@
 </div>
 <!--Add form ends-->
 
+<!--Wardrobe-->
+    <div th:fragment="wardrobe-card">
+        <div class="container">
+            <div class="row" th:each="item: ${items}">
+                <div class="card" style="width: 18rem;">
+                    <div th:if="${item.images} != null">
+                        <td>
+                            <img th:src="${item.images}" class="card-img-top" alt="...">
+                        </td>
+                    </div>
+                    <!--            <img th:src="${item.images}" class="card-img-top" alt="...">-->
+                    <div class="card-body">
+                        <h5 class="card-title">[[${item.itemName}]]</h5>
+                        <p class="card-text">Description: [[${item.description}]]</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Materials: [[${item.fabricMaterial}]]</li>
+                        <li class="list-group-item">Size: [[${item.size}]]</li>
+                        <li class="list-group-item">Color: [[${item.color}]]</li>
+                    </ul>
+                    <div class="card-body">
+<!--                        <button type="checkbox" name="item" th:id="{item.id}" class="btn btn-outline-info">Select</button>-->
+                        <input type="checkbox" name="item" th:id="${item.id}">Select
+                        <a href="#" class="card-link" th:href="@{/delete/{id}(id=${item.id})}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--Wardrobe-->
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -161,7 +172,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-<!--=======-->
-<!--&gt;>>>>>> Stashed changes-->
 </body>
 </html>

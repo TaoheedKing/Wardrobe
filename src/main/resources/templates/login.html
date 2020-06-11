@@ -36,25 +36,10 @@
               </span>
             </nav>
             <div class="logImg">
-                <!--                <img  src="https://images.pexels.com/photos/4056475/pexels-photo-4056475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img" alt="cover-image">-->
                 <img  src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img" alt="cover-image">
             </div>
         </div>
         <!--        right of page log in form-->
-<!--        <div th:if="${param.error}">-->
-<!--            Invalid username or password-->
-<!--        </div>-->
-<!--        <form th:action="@{/login}" method="post">-->
-<!--            <div>-->
-<!--                <label>Username: <input type="text" name="username"></label>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label>Password: <input type="text" name="password"></label>-->
-<!--            </div>-->
-
-<!--            <input type="submit" value="Sign In">-->
-<!--            Login page-->
-<!--        </form>-->
 
         <!--                    Username-->
         <div class="col-6 col-md-4">
@@ -95,17 +80,13 @@
                 </div>
             </div>
         </div>
-        <!--                        <div class="col-6">-->
-        <!--                            <button type="submit" class="btn btn-outline-success btn-lg">Login</button>-->
-        <!--                        </div>-->
+
     <div class="row">
         <div class="col-4">
-            <input class="btn btn-outline-success btn-lg" type="submit" value="  Login  "  onclick="document.getElementById('myInput').value=''">
-            <!--                            <button type="submit" class="btn btn-outline-primary btn-lg" onclick="document.getElementById('myInput').value=''">Add User</button>-->
+            <input class="btn btn-outline-success btn-lg" type="submit" value=" Login  "  onclick="document.getElementById('myInput').value=''">
         </div>
         <div class="col-4">
             <a class="btn btn-outline-primary btn-lg" th:href="@{/signup}">Sign Up</a>
-            <!--                            <button type="submit" class="btn btn-outline-primary btn-lg" onclick="document.getElementById('myInput').value=''">Add User</button>-->
         </div>
     </div>
     </form>
