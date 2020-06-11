@@ -53,6 +53,7 @@ public class DataLoader implements CommandLineRunner {
         topOne.setFabricMaterial("cotton");
         topOne.setSize(7);
         topOne.setItemName("Shirt");
+        topOne.setImages("image/women.png");
         itemRepository.save(topOne);
 
         Item bottomOne = new Item();
@@ -63,4 +64,10 @@ public class DataLoader implements CommandLineRunner {
         bottomOne.setItemName("Jeans");
         itemRepository.save(bottomOne);
     }
+
+
+
+
+
+
 }

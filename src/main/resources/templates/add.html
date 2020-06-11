@@ -10,6 +10,39 @@
 
 <div th:replace="fragment :: add-item"></div>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <input type="text" th:field="*{images}">
+<!--    <select th:field="*{category}">-->
+<!--    <option th:each="cate:${allcategories}"-->
+    <select class="form-control" th:field="*{category}">
+        <option th:each="category:${allcategories}"
+                th:text="${category.categoryType}"
+                th:value="${category.id}">
+        </option>
+<!--&lt;!&ndash;        <option class="dropdown-item" value="top" th:text="tops"></option>&ndash;&gt;-->
+<!--        <div role="separator" class="dropdown-divider"></div>-->
+<!--&lt;!&ndash;        <option class="dropdown-item" value="bottom" th:text="bottoms"></option>&ndash;&gt;-->
+<!--        <div role="separator" class="dropdown-divider"></div>-->
+<!--        <option class="dropdown-item" value="accessory" th:text="accessories"></option>-->
+<!--        <div role="separator" class="dropdown-divider"></div>-->
+<!--        <option class="dropdown-item" value="jacket" th:text="jackets"></option>-->
+<!--        <div role="separator" class="dropdown-divider"></div>-->
+<!--        <option class="dropdown-item" value="shoe" th:text="shoes"></option>-->
+>>>>>>> df5d7a412586f1f4e68ed8801e4eb3abe203440a
+    </select>
+
+    <br/>
+    <input type="file" name="file">
+<input type="submit" value="Submit">
+</form>
+<table>
+<!--<td>-->
+<!--    <a th:href="@{/delete/{id}(id=${item.id})}"><button>Delete</button></a>-->
+<!--</td>-->
+</table>
+=======
+>>>>>>> 100082e2c17bd13375a77e4dc29f610972c2e459
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
