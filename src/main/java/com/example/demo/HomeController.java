@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +37,10 @@ public class HomeController {
 
     @Autowired
     CategoryRepository categoryRepository;
+    @Autowired
+    OutfitRepository outfitRepository;
 
+    ArrayList<Item>list= new ArrayList<>();
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model){
         String username = principal.getName();
@@ -145,15 +150,34 @@ public class HomeController {
     }
     @RequestMapping("/wardrobe")
     public String listItem(Model model){
+
       model.addAttribute("items",itemRepository.findAll());
+      model.addAttribute("outfit", new Outfit());
       return "wardrobe";
+    }
+
+    @RequestMapping("/select/{id}")
+    public String detail(@PathVariable("id") long id, Model model)
+    {
+        model.addAttribute("item", itemRepository.findById(id).get());
+        return "outfit";
+    }
+    @PostMapping("/outfit")
+    public String selectedItem(@ModelAttribute Outfit outfit, Model model)
+    {
+       outfitRepository.save(outfit);
+        model.addAttribute("outfits", itemRepository.findAll());
+        return "outfit";
     }
     //TAK added this
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, Model model){
+
         model.addAttribute("task", itemRepository.findById(id).get());
+        Item i=itemRepository.findById(id).get();
+        i.setCategory(null);
         itemRepository.deleteById(id);
-        return "redirect:/";
+        return "redirect:/wardrobe";
     }
 //=======
 //>>>>>>> Stashed changes

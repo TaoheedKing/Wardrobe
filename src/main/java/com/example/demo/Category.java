@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Set;
 //<<<<<<< HEAD
@@ -19,9 +21,13 @@ public class Category {
     private String shoes;
 
     private String accessories;
+
     private String jackets;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @NotNull
+    private String categoryType;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<Item>items;
 
     public Category() {
@@ -81,5 +87,13 @@ public class Category {
 
     public void setAccessories(String accessories) {
         this.accessories = accessories;
+    }
+
+    public String getCategoryType() {
+        return categoryType;
+    }
+
+    public void setCategoryType(String categoryType) {
+        this.categoryType = categoryType;
     }
 }

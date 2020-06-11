@@ -13,8 +13,11 @@
     <link rel="stylesheet" type="text/css" href="Styles.css">
 </head>
 <body>
-<h4>Wardrobe List</h4>
 
+<div th:replace="fragment :: navbar"></div>
+
+<h4>Wardrobe List</h4>
+<form th:action="@{/outfit}" th:object="${outfit}" method="post">
 <table class="table table-striped table-dark">
     <thead>
     <tr>
@@ -25,7 +28,7 @@
         <th scope="col">category</th>
     </tr>
     </thead>
-    <tbody th:each="item: ${items}">
+     <tbody th:each="item: ${items}">
     <tr>
         <td>[[${item.color}]]</td>
         <td>[[${item.fabricMaterial}]]</td>
@@ -35,13 +38,19 @@
             </td>
         </div>
         <td>[[${item.size}]]</td>
-        <span th:each= "cate: ${item.category}">
-     <td>[[${cate.tops}]] [[${cate.bottoms}]] [[${cate.accessories}]] [[${cate.shoes}]]</td>
+        <span th:each="cate: ${item.category}">
+     <td>[[${cate.categoryType}]]</td>
     </span>
+        <td>
+            <input type="checkbox" name="item" th:id="${item.id}">Select<br>
+            <a th:href="@{/delete/{id}(id=${item.id})}"><button>Delete</button></a>
+            <a th:href="@{/select/{id}(id=${item.id})}"><button>Select</button></a>
+        </td>
     </tr>
     </tbody>
 </table>
-
+    <input type="submit" value="Submit">
+</form>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

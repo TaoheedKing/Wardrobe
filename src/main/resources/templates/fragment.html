@@ -18,13 +18,13 @@
 </head>
 <body>
 
-<<<<<<< Updated upstream
+<!--<<<<<<< Updated upstream-->
 
 <!--Navbar start-->
 
 <div th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" th:inline="text">Welcome [[${user.firstName}]]</a>
+        <a class="navbar-brand" href="#" th:inline="text">Welcome</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,8 +35,14 @@
                     <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/secure}">Secure</a>
+                    <a class="nav-link" th:href="@{/secure}">User Info</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/wardrobe}">Wardrobe</a>
+                </li>
+<!--                Add an add item page-->
+<!--                Add an add dropdown for cloth options-->
+<!--                Drop down items: wardrobe, outfits, add item-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,6 +63,69 @@
 </div>
 <!--Navbar end-->
 
+<!--Add form begins-->
+<div th:fragment="add-item">
+    <div class="jumbotron">
+        <h1 class="display-4">Add New Item</h1>
+        <form>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault01">Name</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="Enter item name..."
+                           required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault02">Material</label>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="Enter material..."
+                           required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault04">Catagory</label>
+                    <select class="custom-select" id="validationDefault04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Tops</option>
+                        <option>Bottoms</option>
+                        <option>Shoes</option>
+                        <option>Jackets</option>
+                        <option>Accessories</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault03">Color</label>
+                    <input type="text" class="form-control" id="validationDefault03" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault05">Size</label>
+                    <input type="text" class="form-control" id="validationDefault05" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Description</label>
+                <textarea class="form-control" placeholder="Please enter descriptive qualities of this clothing item"
+                          required></textarea>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">
+                        Agree to terms and conditions
+                    </label>
+                </div>
+            </div>
+
+        </form>
+
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+            featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+</div>
+<!--Add form ends-->
 
 
 
@@ -84,7 +153,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-=======
->>>>>>> Stashed changes
+<!--=======-->
+<!--&gt;>>>>>> Stashed changes-->
 </body>
 </html>
