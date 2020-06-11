@@ -16,37 +16,81 @@
 
 <div th:replace="fragment :: navbar"></div>
 
+
 <h4>Wardrobe List</h4>
 
-<table class="table table-striped table-dark">
-    <thead>
-    <tr>
-        <th scope="col">Color</th>
-        <th scope="col">fabric_material</th>
-        <th scope="col">images</th>
-        <th scope="col">size</th>
-        <th scope="col">category</th>
-    </tr>
-    </thead>
-    <tbody th:each="item: ${items}">
-    <tr>
-        <td>[[${item.color}]]</td>
-        <td>[[${item.fabricMaterial}]]</td>
-        <div th:if="${item.images} != null">
-            <td>
-                <img th:src="${item.images}">
-            </td>
-        </div>
-        <td>[[${item.size}]]</td>
-        <span th:each="cate: ${item.category}">
-     <td>[[${cate.categoryType}]]</td>
-    </span>
-        <td>
-            <a th:href="@{/delete/{id}(id=${item.id})}"><button>Delete</button></a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<!--<table>-->
+<!--    <tr th:if="${category.cateoryType} == tops">-->
+<!--        <div th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <tr th:if="${category.cateoryType} == bottoms>-->
+<!--        <div th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <tr th:if="${category.cateoryType} == shoes>-->
+<!--        <div th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <tr th:if="${category.cateoryType} == jackets>-->
+<!--        <div th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <tr th:if="${category.cateoryType} == accessories>-->
+<!--        <div th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<!--<table class="table table-striped table-dark">-->
+<!--    <tbody th:each="item: ${items}">-->
+<!--    <tr>-->
+<!--        <div id="tops" th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <br>-->
+<!--    <hr>-->
+<!--    <tr>-->
+<!--        <div id="bottoms" th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <br>-->
+<!--    <hr>-->
+<!--    <tr>-->
+<!--        <div id="shoes" th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <br>-->
+<!--    <hr>-->
+<!--    <tr>-->
+<!--        <div id="jackets" th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    <br>-->
+<!--    <hr>-->
+<!--    <tr>-->
+<!--        <div id="accessories" th:replace="fragment :: wardrobe-card"></div>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" >Tops</a>
+        <div id="tops" th:replace="fragment :: wardrobe-card"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link">Bottoms</a>
+        <div id="bottoms" th:replace="fragment :: wardrobe-card"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link">Shoes</a>
+        <div id="shoes" th:replace="fragment :: wardrobe-card"></div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link">Jackets</a>
+        <div id="jackets" th:replace="fragment :: wardrobe-card"></div>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link">Accessories</a>
+        <div id="accessories" th:replace="fragment :: wardrobe-card"></div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+    </li>
+</ul>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
