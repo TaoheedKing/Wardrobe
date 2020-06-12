@@ -14,17 +14,12 @@
 
 
 <div th:replace="fragment :: navbar"></div>
-
-
-<h2>Secure Page</h2>
-<h4>Name: </h4>
-<p>
-    [[${user.firstName}]] [[${user.lastName}]]
-</p>
 <br>
-<h4>Email: </h4>
-<p th:text="${user.email}"></p>
-<h4>Username: </h4>
-<p th:text="${user.username}"></p>
+<h2>Account Information</h2>
+<br>
+<div th:replace="fragment :: user-info"></div>
+
+
+
 </body>
 </html>

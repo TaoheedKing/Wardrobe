@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
     @Autowired
     CategoryRepository categoryRepository;
+    @Autowired
+    OutfitRepository outfitRepository;
 
     @Autowired
     ItemRepository itemRepository;
@@ -18,6 +20,10 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Outfit outfit = new Outfit();
+        outfit.setCurrentoutfit(true);
+        outfitRepository.save(outfit);
+
 
 //        Category category = new Category();
 //

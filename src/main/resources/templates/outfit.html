@@ -13,17 +13,17 @@
 
 
 <div th:replace="fragment :: navbar"></div>
+<div th:replace="fragment :: wardrobe-card"></div>
 
-
-<div th:each="outfit:${outfits}">
-Name :<span th:text="${outfit.itemName}" ></span><br />
-Color :<span th:text="${outfit.color}" ></span><br />
-Description :<span th:text="${outfit.description}" ></span>
-Size :<span th:text="${outfit.size}" ></span><br />
-Material:<span th:text="${outfit.fabricMaterial}" ></span><br />
-    <div th:if="${outfit.images} != null">
+<div th:each="item:${outfit.items}">
+Name :<span th:text="${item.itemName}" ></span><br />
+Color :<span th:text="${item.color}" ></span><br />
+Description :<span th:text="${item.description}" ></span>
+Size :<span th:text="${item.size}" ></span><br />
+Material:<span th:text="${item.fabricMaterial}" ></span><br />
+    <div th:if="${item.images} != null">
         <td>
-            <img th:src="${outfit.images}">
+            <img th:src="${item.images}">
         </td>
     </div><br/>
 </div>

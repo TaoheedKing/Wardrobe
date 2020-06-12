@@ -7,13 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-//<<<<<<< Updated upstream
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-//=======
-//>>>>>>> Stashed changes
+
 
 import javax.persistence.GeneratedValue;
 import javax.validation.Valid;
@@ -49,12 +47,16 @@ public class HomeController {
     public String secure(Principal principal, Model model){
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsername(username));
-
+        Set<Role> roles = new HashSet<Role>();
+        model.addAttribute("roles", roleRepository.findAllByUsername(username));
         return "secure";
     }
 
     @RequestMapping("/")
     public String index(Principal principal, Model model){
+        Outfit outfit =outfitRepository.findByCurrentoutfit(true);
+        outfit.setItems(null);
+        outfitRepository.save(outfit);
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsername(username));
         return "index";
@@ -95,7 +97,9 @@ public class HomeController {
     @RequestMapping("/admin")
     public String admin(Principal principal, Model model){
         String username = principal.getName();
-        model.addAttribute("user", userRepository.findByUsername(username));
+        model.addAttribute("currentuser", userRepository.findByUsername(username));
+        model.addAttribute("allusers", userRepository.findAll());
+
         return "admin";
     }
 
@@ -150,20 +154,31 @@ public class HomeController {
         }
         return "redirect:/";
     }
-    @RequestMapping("/wardrobe")
-    public String listItem(Model model, Outfit outfit){
+    @GetMapping("/wardrobe")
+    public String listItem(Model model){
 
       model.addAttribute("items",itemRepository.findAll());
-      model.addAttribute("outfit", new Outfit());
+
+      model.addAttribute("outfit",outfitRepository.findByCurrentoutfit(true));
+
       model.addAttribute("category", categoryRepository.findAll());
 
       return "wardrobe";
     }
 
     @PostMapping("/wardrobe")
-    public String processWardrobe(Model model, Outfit outfit){
-        outfitRepository.save(outfit);
-        return "redirect:/wardrobe";
+    public String processWardrobe(Model model,@RequestParam String[] checkedItems){
+        Outfit outfit=outfitRepository.findByCurrentoutfit(true);
+        for(String s: checkedItems){
+            Item i=itemRepository.findById(Long.parseLong(s)).get();
+            i.setOutfit(outfit);
+            itemRepository.save(i);
+            System.out.println("built relationship: "+ i.getItemName()+ " outfit id"+ i.getOutfit().getId());
+        }
+
+
+        model.addAttribute("outfit", outfit);
+        return "redirect:/outfit";
     }
 
     @RequestMapping("/select/{id}")
@@ -172,19 +187,12 @@ public class HomeController {
         model.addAttribute("item", itemRepository.findById(id).get());
         return "outfit";
     }
-    @GetMapping("/outfit")
-    public String processOutfit(Model model){
-        model.addAttribute("outfits", outfitRepository.findAll());
-        model.addAttribute("item", itemRepository.findAll());
-        return "outfit";
-    }
+    @RequestMapping("/outfit")
+    public String showoutfit( Model model){
+        model.addAttribute("outfit", outfitRepository.findByCurrentoutfit(true));
+        Outfit o=outfitRepository.findByCurrentoutfit(true);
 
-
-    @PostMapping("/outfit")
-    public String selectedItem(@ModelAttribute Outfit outfit, Model model)
-    {
-        model.addAttribute("outfits", itemRepository.findAll());
-        outfitRepository.save(outfit);
+        //model.addAttribute("item", itemRepository.findAll());
         return "outfit";
     }
 
@@ -200,6 +208,4 @@ public class HomeController {
         itemRepository.deleteById(id);
         return "redirect:/wardrobe";
     }
-//=======
-//>>>>>>> Stashed changes
 }

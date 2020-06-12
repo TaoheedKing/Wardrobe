@@ -18,6 +18,10 @@ public class Item {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "outfit_id")
+    private Outfit outfit;
+
     public String getDescription() {
         return description;
     }
@@ -86,4 +90,11 @@ public class Item {
     }
 
 
+    public Outfit getOutfit() {
+        return outfit;
+    }
+
+    public void setOutfit(Outfit outfit) {
+        this.outfit = outfit;
+    }
 }

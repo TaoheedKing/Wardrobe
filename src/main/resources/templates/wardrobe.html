@@ -62,7 +62,7 @@
 <!--    <input type="submit" value="Try Outfit!">-->
 <!--</form>-->
 
-<form th:action="@{/outfit}" th:object="${outfit}" method="post">
+<form th:action="@{/wardrobe}" th:object="${outfit}" method="post">
     <div class="scrolling-wrapper" th:each="item: ${category}">
 
         <div class="card" th:if="${item.categoryType} == 'Tops'">

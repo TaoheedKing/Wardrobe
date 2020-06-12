@@ -4,10 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.Set;
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> 9fb21b6be695f82c188866088bf5910432068091
+
 @Entity
 public class Category {
     @Id

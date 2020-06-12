@@ -153,7 +153,7 @@
                     </ul>
                     <div class="card-body">
 <!--                        <button type="checkbox" name="item" th:id="{item.id}" class="btn btn-outline-info">Select</button>-->
-                        <input type="checkbox" name="item" th:id="${item.id}">Select
+                        <input type="checkbox" name="checkedItems" th:id="${item.id}" th:value="${item.id}">Select
                         <a href="#" class="card-link" th:href="@{/delete/{id}(id=${item.id})}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
                     </div>
                 </div>
@@ -162,6 +162,86 @@
     </div>
 
 <!--Wardrobe-->
+
+<!--Account Information begins-->
+
+<div th:fragment="user-info">
+    <div class="card">
+        <h4 class="card-header">[[${user.firstName}]] [[${user.lastName}]]</h4>
+        <div class="card-body">
+            <div th:each="role : ${roles}">
+                <h5 class="card-title" th:inline="text">You are currently logged in as [[${role.role}]]</h5>
+            </div>
+            <br><br>
+            <h6>Username: </h6>
+            <p class="card-text" th:text="${user.username}"></p>
+            <br>
+            <h6>Password: </h6>
+            <p class="card-text" th:text="${user.password}"></p>
+            <br>
+            <h6>Email: </h6>
+            <p class="card-text" th:text="${user.email}"></p>
+            <br>
+            <h6>Phone Number: </h6>
+            <p class="card-text" th:text="${user.phone}"></p>
+        </div>
+    </div>
+</div>
+
+<!--Account Information ends-->
+
+
+
+<!--All users-->
+<div th:fragment="all-users">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                            [[${user.firstName}]] [[${user.lastName}]]
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                     data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <div th:each="role : ${roles}">
+                                    <h5 class="card-title" th:inline="text">This users role is [[${role.role}]]</h5>
+                                </div>
+                                <br><br>
+                                <h6>Username: </h6>
+                                <p class="card-text" th:text="${user.username}"></p>
+                                <br>
+                                <h6>Password: </h6>
+                                <p class="card-text" th:text="${user.password}"></p>
+                                <br>
+                                <h6>Email: </h6>
+                                <p class="card-text" th:text="${user.email}"></p>
+                                <br>
+                                <h6>Phone Number: </h6>
+                                <p class="card-text" th:text="${user.phone}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!--All users-->
+
+
+
+
+
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
