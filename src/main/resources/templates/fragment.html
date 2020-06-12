@@ -134,14 +134,13 @@
 <!--Wardrobe-->
     <div th:fragment="wardrobe-card">
         <div class="container">
-            <div class="row" th:each="item: ${items}">
-                <div class="card" style="width: 18rem;">
+            <div class="row" >
+                <div class="card" style="width: 18rem;" th:each="item:${items}">
                     <div th:if="${item.images} != null">
                         <td>
                             <img th:src="${item.images}" class="card-img-top" alt="...">
                         </td>
                     </div>
-                    <!--            <img th:src="${item.images}" class="card-img-top" alt="...">-->
                     <div class="card-body">
                         <h5 class="card-title">[[${item.itemName}]]</h5>
                         <p class="card-text">Description: [[${item.description}]]</p>
@@ -150,6 +149,7 @@
                         <li class="list-group-item">Materials: [[${item.fabricMaterial}]]</li>
                         <li class="list-group-item">Size: [[${item.size}]]</li>
                         <li class="list-group-item">Color: [[${item.color}]]</li>
+                        <li class="list-group-item">Category: [[${item.category.categoryType}]]</li>
                     </ul>
                     <div class="card-body">
 <!--                        <button type="checkbox" name="item" th:id="{item.id}" class="btn btn-outline-info">Select</button>-->

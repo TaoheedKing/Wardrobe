@@ -9,9 +9,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 //<<<<<<< Updated upstream
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 //=======
 //>>>>>>> Stashed changes
 
+import javax.persistence.GeneratedValue;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
@@ -40,7 +44,7 @@ public class HomeController {
     @Autowired
     OutfitRepository outfitRepository;
 
-    ArrayList<Item>list= new ArrayList<>();
+
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model){
         String username = principal.getName();
@@ -71,8 +75,6 @@ public class HomeController {
             return "signup";
         } else {
             model.addAttribute("message", "You have successfully created an account!");
-//            String username = principal.getName();
-//            model.addAttribute("user", userRepository.findByUsername(username));
             user.setEnabled(true);
             Role role = new Role(user.getUsername(), "ROLE_USER");
             Set<Role> roles = new HashSet<Role>();
@@ -134,7 +136,7 @@ public class HomeController {
 
 //<<<<<<< Updated upstream
     @PostMapping("/processItem")
-    public String processActor(@ModelAttribute Item item, @RequestParam("file") MultipartFile file){
+    public String processItem(@ModelAttribute Item item, @RequestParam("file") MultipartFile file){
         if(file.isEmpty()){
             return "redirect:/add";
         }
@@ -149,11 +151,19 @@ public class HomeController {
         return "redirect:/";
     }
     @RequestMapping("/wardrobe")
-    public String listItem(Model model){
+    public String listItem(Model model, Outfit outfit){
 
       model.addAttribute("items",itemRepository.findAll());
       model.addAttribute("outfit", new Outfit());
+      model.addAttribute("category", categoryRepository.findAll());
+
       return "wardrobe";
+    }
+
+    @PostMapping("/wardrobe")
+    public String processWardrobe(Model model, Outfit outfit){
+        outfitRepository.save(outfit);
+        return "redirect:/wardrobe";
     }
 
     @RequestMapping("/select/{id}")
@@ -162,11 +172,19 @@ public class HomeController {
         model.addAttribute("item", itemRepository.findById(id).get());
         return "outfit";
     }
+    @GetMapping("/outfit")
+    public String processOutfit(Model model){
+        model.addAttribute("outfits", outfitRepository.findAll());
+        model.addAttribute("item", itemRepository.findAll());
+        return "outfit";
+    }
+
+
     @PostMapping("/outfit")
     public String selectedItem(@ModelAttribute Outfit outfit, Model model)
     {
-       outfitRepository.save(outfit);
         model.addAttribute("outfits", itemRepository.findAll());
+        outfitRepository.save(outfit);
         return "outfit";
     }
     //TAK added this

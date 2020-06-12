@@ -11,6 +11,19 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/2b26c5529b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="Styles.css">
+
+    <style>
+        .scrolling-wrapper {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+        .card {
+            display: inline-block;
+        }
+
+
+    </style>
 </head>
 <body>
 
@@ -19,33 +32,71 @@
 
 <h4>Wardrobe List</h4>
 
-<form th:action="@{/outfit}" th:object="${outfit}" method="post">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active">Tops</a>
-            <div id="tops" th:replace="fragment :: wardrobe-card"></div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">Bottoms</a>
-            <div id="bottoms" th:replace="fragment :: wardrobe-card"></div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">Shoes</a>
-            <div id="shoes" th:replace="fragment :: wardrobe-card"></div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">Jackets</a>
-            <div id="jackets" th:replace="fragment :: wardrobe-card"></div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">Accessories</a>
-            <div id="accessories" th:replace="fragment :: wardrobe-card"></div>
-        </li>
+<!--<form th:action="@{/outfit}" th:object="${outfit}" method="post">-->
+<!--    <ul class="nav nav-tabs">-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link active">Tops</a>-->
+<!--            <div id="tops" th:if="${item.categoryType} == tops" th:replace="fragment :: wardrobe-card"></div>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link">Bottoms</a>-->
+<!--            <div id="bottoms" th:replace="fragment :: wardrobe-card"></div>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link">Shoes</a>-->
+<!--            <div id="shoes" th:replace="fragment :: wardrobe-card"></div>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link">Jackets</a>-->
+<!--            <div id="jackets" th:replace="fragment :: wardrobe-card"></div>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link">Accessories</a>-->
+<!--            <div id="accessories" th:replace="fragment :: wardrobe-card"></div>-->
+<!--        </li>-->
 
-        <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-        </li>
-    </ul>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link disabled">Disabled</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <input type="submit" value="Try Outfit!">-->
+<!--</form>-->
+
+<form th:action="@{/outfit}" th:object="${outfit}" method="post">
+    <div class="scrolling-wrapper" th:each="item: ${category}">
+
+        <div class="card" th:if="${item.categoryType} == 'Tops'">
+            <label>Tops</label>
+            <div id="tops" th:replace="fragment :: wardrobe-card"></div>
+        </div>
+        <br>
+
+        <div class="card" th:if="${item.categoryType} == 'Bottoms'">
+            <label>Bottoms</label>
+            <div id="bottoms" th:replace="fragment :: wardrobe-card"></div>
+        </div>
+        <br>
+
+        <div class="card" th:if="${item.categoryType} == 'Shoes'">
+            <label>Shoes</label>
+            <div id="shoes" th:replace="fragment :: wardrobe-card"></div>
+        </div>
+        <br>
+
+        <div class="card" th:if="${item.categoryType} == 'Jackets'">
+            <label>Jackets</label>
+            <div id="jackets" th:replace="fragment :: wardrobe-card"></div>
+        </div>
+        <br>
+
+        <div class="card" th:if="${item.categoryType} == 'Accessories'">
+            <label>Accessories</label>
+            <div id="accessories" th:replace="fragment :: wardrobe-card"></div>
+        </div>
+        <br>
+
+    </div>
     <input type="submit" value="Try Outfit!">
 </form>
 
+</body>
