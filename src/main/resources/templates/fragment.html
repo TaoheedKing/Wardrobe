@@ -167,23 +167,23 @@
 
 <div th:fragment="user-info">
     <div class="card">
-        <h4 class="card-header">[[${user.firstName}]] [[${user.lastName}]]</h4>
+        <h4 class="card-header" th:inline="text">[[${currentuser.firstName}]] [[${currentuser.lastName}]]</h4>
         <div class="card-body">
-            <div th:each="role : ${roles}">
-                <h5 class="card-title" th:inline="text">You are currently logged in as [[${role.role}]]</h5>
-            </div>
+
+                <h5 class="card-title">You are currently logged in as [[${currentrole.role}]]</h5>
+
             <br><br>
             <h6>Username: </h6>
-            <p class="card-text" th:text="${user.username}"></p>
+            <p class="card-text" th:text="${currentuser.username}"></p>
             <br>
             <h6>Password: </h6>
-            <p class="card-text" th:text="${user.password}"></p>
+            <p class="card-text" th:text="${currentuser.password}"></p>
             <br>
             <h6>Email: </h6>
-            <p class="card-text" th:text="${user.email}"></p>
+            <p class="card-text" th:text="${currentuser.email}"></p>
             <br>
             <h6>Phone Number: </h6>
-            <p class="card-text" th:text="${user.phone}"></p>
+            <p class="card-text" th:text="${currentuser.phone}"></p>
         </div>
     </div>
 </div>
@@ -211,7 +211,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div th:each="role : ${roles}">
-                                    <h5 class="card-title" th:inline="text">This users role is [[${role.role}]]</h5>
+                                    <h5 class="card-title">This users role is [[${role.role}]]</h5>
                                 </div>
                                 <br><br>
                                 <h6>Username: </h6>

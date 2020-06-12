@@ -17,12 +17,10 @@
 
 <h2>Admin Page</h2>
 <div th:replace="fragment :: user-info"></div>
-<br>
-<table>
-    <th>
-        All other users
 
-    </th>
+<br>
+<h3>All other users</h3>
+<table>
     <div th:each="user: ${allusers}">
         <tbody>
         <div th:replace="fragment :: all-users"></div>

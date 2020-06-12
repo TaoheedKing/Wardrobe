@@ -46,9 +46,13 @@ public class HomeController {
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model){
         String username = principal.getName();
-        model.addAttribute("user", userRepository.findByUsername(username));
+        model.addAttribute("currentuser", userRepository.findByUsername(username));
         Set<Role> roles = new HashSet<Role>();
         model.addAttribute("roles", roleRepository.findAllByUsername(username));
+        model.addAttribute("allusers", userRepository.findAll());
+        model.addAttribute("currentrole", roleRepository.findByUsername(username));
+        model.addAttribute("roles",roleRepository.findAll());
+
         return "secure";
     }
 
@@ -99,6 +103,8 @@ public class HomeController {
         String username = principal.getName();
         model.addAttribute("currentuser", userRepository.findByUsername(username));
         model.addAttribute("allusers", userRepository.findAll());
+        model.addAttribute("currentrole", roleRepository.findByUsername(username));
+        model.addAttribute("roles",roleRepository.findAll());
 
         return "admin";
     }
