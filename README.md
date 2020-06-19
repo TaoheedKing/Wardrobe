@@ -18,5 +18,6 @@ An image of that item
 The application should allow new users to sign up for an account and track their wardrobe items. Users can update information regarding each of their items or remove items from their wardrobe.
 
 Users should also be able to create packing lists for upcoming trips using items from their wardrobe.
+Add a new item and it will appear in your wardrobe. Then, select you desired items in your wardrobe and click "Try Outfit" at the bottom of the page. This will create an outfit. 
 
 To Log in as a user, the username/password is user/user. Or, you can sign up to create a new account. For an administrative role, the username/password is admin/admin
